@@ -5,6 +5,6 @@
 ```sh
 composer install 
 yarn install --no-bin-links 
-cp .env .env.example 
+cp .env.example .env 
 php artisan key:generate 
 ```
