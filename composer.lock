@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7ec1ccd1b6bbaa22cd6f4c96fd78746",
+    "content-hash": "189a1657f17898d1b13b406c55398cdd",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2911,16 +2911,16 @@
         },
         {
             "name": "yoshikyoto/riotgames-api",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yoshikyoto/riotgames-api.git",
-                "reference": "fe57f017ac8095e365d09704a227bb9bf41d9da2"
+                "reference": "7772772a9ad4eaf2b934255e9cea09398e57eeb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yoshikyoto/riotgames-api/zipball/fe57f017ac8095e365d09704a227bb9bf41d9da2",
-                "reference": "fe57f017ac8095e365d09704a227bb9bf41d9da2",
+                "url": "https://api.github.com/repos/yoshikyoto/riotgames-api/zipball/7772772a9ad4eaf2b934255e9cea09398e57eeb7",
+                "reference": "7772772a9ad4eaf2b934255e9cea09398e57eeb7",
                 "shasum": ""
             },
             "require": {
@@ -2946,7 +2946,7 @@
                 "LoL",
                 "RiotGames"
             ],
-            "time": "2019-05-10T03:26:02+00:00"
+            "time": "2019-05-10T03:42:52+00:00"
         }
     ],
     "packages-dev": [
