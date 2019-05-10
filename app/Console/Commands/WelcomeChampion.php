@@ -38,6 +38,7 @@ class WelcomeChampion extends Command
      */
     public function handle()
     {
-        $this->legendZen->welcomeAllVersions();
+        $version = $this->legendZen->welcomeNewestVersion();
+        var_dump($version);
     }
 }
