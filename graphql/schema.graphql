@@ -6,6 +6,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
 type Query {
     champions: [Champion!]! @all
+    championMastery(summonerName: String!): [ChampionMastery!]!
 }
 
 type Champion {
@@ -15,4 +16,8 @@ type Champion {
     icon_url: String!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type ChampionMastery {
+    isChestGranted: Boolean!
 }
