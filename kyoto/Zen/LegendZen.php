@@ -5,6 +5,9 @@ namespace SummonersKyoto\Zen;
 use Yoshikyoto\Riotgames\Api\Client;
 use Yoshikyoto\Riotgames\Api\Enum\Language;
 use Composer\Semver\Semver;
+use SummonersKyoto\Kami\SummonerId;
+use SummonersKyoto\Kami\SummonerName;
+use SummonersKyoto\Kami\Summoner;
 
 class LegendZen
 {
@@ -49,6 +52,12 @@ class LegendZen
             new SummonerName($summoner->getName()),
             new SummonerId($summoner->getId())
         );
+    }
+
+    public function welcomeChampionMastery(SummonerId $summonerId)
+    {
+        $result = $this->client->getChampionMastery($summonerId->__toString());
+        var_dump($result);
     }
 
 }

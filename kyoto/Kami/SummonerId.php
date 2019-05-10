@@ -1,6 +1,6 @@
 <?php
 
-namespace SummonersKyoto\Ksmi;
+namespace SummonersKyoto\Kami;
 
 class SummonerId
 {
