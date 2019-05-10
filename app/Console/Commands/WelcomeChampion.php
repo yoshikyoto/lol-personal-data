@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use SummonersKyoto\Zen\LegendZen;
 
 class WelcomeChampion extends Command
 {
@@ -11,7 +12,7 @@ class WelcomeChampion extends Command
      *
      * @var string
      */
-    protected $signature = 'champions:welcome';
+    protected $signature = 'champion:welcome';
 
     /**
      * The console command description.
@@ -20,23 +21,23 @@ class WelcomeChampion extends Command
      */
     protected $description = 'チャンピオン情報をAPIから取得してきてDBにキャッシュする';
 
+    private $legendZen;
+
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
-    public function __construct()
-    {
+    public function __construct(
+        LegendZen $legentZen
+    ) {
         parent::__construct();
+        $this->legendZen = $legentZen;
     }
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
-        //
+        $this->legendZen->welcomeAllVersions();
     }
 }
