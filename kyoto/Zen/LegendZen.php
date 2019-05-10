@@ -3,6 +3,7 @@
 namespace SummonersKyoto\Zen;
 
 use Yoshikyoto\Riotgames\Api\Client;
+use Yoshikyoto\Riotgames\Api\Enum\Language;
 use Composer\Semver\Semver;
 
 class LegendZen
@@ -19,7 +20,21 @@ class LegendZen
         $this->semver = $semver;
     }
 
-    public function welcomeNewestVersion()
+    public function welcomeCurrentVersionChampions(): array
+    {
+        $version = $this->welcomeCurrentVersion();
+        return $this->welcomeChampions($version);
+    }
+
+    public function welcomeChampions(Version $version): array
+    {
+        return $this->client->getChampions(
+            $version->__toString(),
+            Language::JA_JP
+        );
+    }
+
+    public function welcomeCurrentVersion(): Version
     {
         $versions = array_filter($this->client->getVersions(), function($version) {
             return $this->isValidVersion($version);
