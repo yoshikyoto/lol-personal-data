@@ -28,10 +28,10 @@ class WelcomeChampion extends Command
     private $legendZen;
 
     public function __construct(
-        LegendZen $legentZen
+        LegendZen $legendZen
     ) {
         parent::__construct();
-        $this->legendZen = $legentZen;
+        $this->legendZen = $legendZen;
     }
 
     /**

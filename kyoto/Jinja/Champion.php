@@ -18,10 +18,19 @@ class Champion extends Model
      */
     protected $guarded = [];
 
+    /**
+     * @var bool primaryKeyをautoincrementにしない場合は必要
+     */
     public $incrementing = false;
 
+    /**
+     * @var string primaryKeyをid以外にする場合は必要
+     */
     protected $primaryKey = 'key';
 
+    /**
+     * @var string primaryKeyをstiringにする場合は必要
+     */
     protected $keyType = 'string';
 
     /**
