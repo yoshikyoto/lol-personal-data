@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use SummonersKyoto\Jinja\Champion;
 use SummonersKyoto\Zen\LegendZen;
+use SummonersKyoto\Zen\SummonerName;
 use SummonersKyoto\Zen\Version;
-use Yoshikyoto\Riotgames\Api\Enum\Language;
 use Yoshikyoto\Riotgames\Model\Champion as ApiChampion;
 
 class WelcomeChampion extends Command
@@ -49,6 +49,9 @@ class WelcomeChampion extends Command
                 $this->welcomeIconUrl($version, $champion)
             );
         }
+
+        $r = $this->legendZen->welcomeSummoner(new SummonerName('うたかた'));
+        var_dump($r);
     }
 
     private function welcomeIconUrl(Version $version, ApiChampion $champion): string

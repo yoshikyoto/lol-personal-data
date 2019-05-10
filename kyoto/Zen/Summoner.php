@@ -25,6 +25,4 @@ class Summoner
     {
         return $this->id;
     }
-
-
 }

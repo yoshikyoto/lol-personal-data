@@ -37,9 +37,18 @@ class LegendZen
         return new Version($versions[0]);
     }
 
-    public function isValidVersion(string $version)
+    public function isValidVersion(string $version): bool
     {
         return preg_match('/^[0-9]+\.[0-9]+\.[0-9]+$/u', $version) === 1;
+    }
+
+    public function welcomeSummoner(SummonerName $summonerName): Summoner
+    {
+        $summoner = $this->client->getSummoner($summonerName->__toString());
+        return new Summoner(
+            new SummonerName($summoner->getName()),
+            new SummonerId($summoner->getId())
+        );
     }
 
 }
