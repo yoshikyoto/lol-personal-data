@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SummonersKyoto\Zen;
+namespace SummonersKyoto\Kami;
 
 
 class Summoner

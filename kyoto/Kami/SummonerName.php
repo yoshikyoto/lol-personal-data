@@ -1,6 +1,6 @@
 <?php
 
-namespace SummonersKyoto\Zen;
+namespace SummonersKyoto\Ksmi;
 
 class SummonerName
 {
