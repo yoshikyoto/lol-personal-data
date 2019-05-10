@@ -2,14 +2,17 @@
 
 namespace SummonersKyoto\Zen;
 
-class SummonerId {
+class SummonerId
+{
     private $value;
 
-    public function __construct(string $value) {
+    public function __construct(string $value)
+    {
         $this->value = $value;
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->value;
     }
 }
