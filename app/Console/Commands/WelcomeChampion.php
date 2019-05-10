@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use SummonersKyoto\Jinja\Champion;
 use SummonersKyoto\Zen\LegendZen;
 
 class WelcomeChampion extends Command
@@ -39,6 +40,12 @@ class WelcomeChampion extends Command
     public function handle()
     {
         $champions = $this->legendZen->welcomeCurrentVersionChampions();
-        var_dump($champions);
+        foreach ($champions as $champion) {
+            Champion::summon(
+                (int) $champion->getKey(),
+                $champion->getName(),
+                ''
+            );
+        }
     }
 }
