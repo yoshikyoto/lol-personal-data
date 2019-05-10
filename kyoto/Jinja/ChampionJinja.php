@@ -2,6 +2,14 @@
 
 namespace SummonersKyoto\Jinja;
 
-interface ChampionJinja {
-    public function getAllChampions(): array;
+class ChampionJinja
+{
+    /**
+     * チャンピオン情報をDBから取得する
+     * @return array
+     */
+    public function welcomeAllChampions(): array
+    {
+
+    }
 }
