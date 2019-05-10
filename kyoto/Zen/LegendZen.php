@@ -2,6 +2,9 @@
 
 namespace SummonersKyoto\Zen;
 
+use SummonersKyoto\Kami\ChampionKey;
+use SummonersKyoto\Kami\ChampionMastery;
+use Yoshikyoto\Riotgames\Model\ChampionMastery as ZenChampionMastery;
 use Yoshikyoto\Riotgames\Api\Client;
 use Yoshikyoto\Riotgames\Api\Enum\Language;
 use Composer\Semver\Semver;
@@ -55,10 +58,21 @@ class LegendZen
         );
     }
 
-    public function welcomeChampionMastery(SummonerId $summonerId)
+    public function welcomeChampionMasteries(SummonerId $summonerId)
     {
-        $result = $this->client->getChampionMastery($summonerId->__toString());
-        var_dump($result);
+        $masteries = $this->client->getChampionMastery($summonerId->__toString());
+        return array_map(function($mastery) {
+            return $this->welcomeChampionMastery($mastery);
+        }, $masteries);
     }
 
+    private function welcomeChampionMastery(ZenChampionMastery $mastery)
+    {
+        return new ChampionMastery(
+            $mastery->getChestGranted(),
+            new ChampionKey($mastery->getChampionId()),
+            $mastery->getChampionLevel(),
+            $mastery->getTokensEarned()
+        );
+    }
 }
