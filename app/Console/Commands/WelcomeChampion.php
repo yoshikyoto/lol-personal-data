@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use SummonersKyoto\Jinja\Champion;
 use SummonersKyoto\Zen\LegendZen;
-use SummonersKyoto\Zen\SummonerName;
-use SummonersKyoto\Zen\Version;
-use Yoshikyoto\Riotgames\Model\Champion as ApiChampion;
+use SummonersKyoto\Kami\SummonerName;
+use SummonersKyoto\Kami\Version;
+use Yoshikyoto\Riotgames\Model\Champion as ZenChampion;
 
 class WelcomeChampion extends Command
 {
@@ -49,12 +49,9 @@ class WelcomeChampion extends Command
                 $this->welcomeIconUrl($version, $champion)
             );
         }
-
-        $r = $this->legendZen->welcomeSummoner(new SummonerName('うたかた'));
-        var_dump($r);
     }
 
-    private function welcomeIconUrl(Version $version, ApiChampion $champion): string
+    private function welcomeIconUrl(Version $version, ZenChampion $champion): string
     {
         $base = 'http://ddragon.leagueoflegends.com/cdn';
         $path = "/{$version->__toString()}/img/champion/{$champion->getId()}.png";
