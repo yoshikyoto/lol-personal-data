@@ -25,12 +25,11 @@ class ChampionMastery
         GraphQLContext $context,
         ResolveInfo $resolveInfo
     ) {
-        $summonerNameString = $args['summonerName'];
         /**
          * @var LegendZen $zen
          */
         $zen = \App::make(LegendZen::class);
-        $summoner = $zen->welcomeSummoner(new SummonerName($summonerNameString));
+        $summoner = $zen->welcomeSummoner($this->welcomeSummonerName($args));
         $championMasteries = $zen->welcomeChampionMasteries($summoner->getId());
 
         return array_map(function(KamiChampiomMastery $championMastery) {
@@ -38,5 +37,10 @@ class ChampionMastery
                 'isChestGranted' => $championMastery->isChestGranted(),
             ];
         }, $championMasteries);
+    }
+
+    private function welcomeSummonerName(array $args): SummonerName
+    {
+        return new SummonerName($args['summonerName']);
     }
 }
