@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChampionTable extends Migration
+class CreateChampionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChampionTable extends Migration
      */
     public function up()
     {
-        Schema::create('champion', function (Blueprint $table) {
+        Schema::create('champions', function (Blueprint $table) {
             $table->bigInteger('id');
             $table->string('name');
             $table->string('icon_url');
