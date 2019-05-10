@@ -5,6 +5,9 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use SummonersKyoto\Jinja\Champion;
 use SummonersKyoto\Zen\LegendZen;
+use SummonersKyoto\Zen\Version;
+use Yoshikyoto\Riotgames\Api\Enum\Language;
+use Yoshikyoto\Riotgames\Model\Champion as ApiChampion;
 
 class WelcomeChampion extends Command
 {
@@ -24,9 +27,6 @@ class WelcomeChampion extends Command
 
     private $legendZen;
 
-    /**
-     * Create a new command instance.
-     */
     public function __construct(
         LegendZen $legentZen
     ) {
@@ -39,13 +39,22 @@ class WelcomeChampion extends Command
      */
     public function handle()
     {
-        $champions = $this->legendZen->welcomeCurrentVersionChampions();
+        $version = $this->legendZen->welcomeCurrentVersion();
+        $champions = $this->legendZen->welcomeChampions($version);
         foreach ($champions as $champion) {
             Champion::summon(
-                (int) $champion->getKey(),
+                $champion->getKey(),
+                $champion->getId(),
                 $champion->getName(),
-                ''
+                $this->welcomeIconUrl($version, $champion)
             );
         }
+    }
+
+    private function welcomeIconUrl(Version $version, ApiChampion $champion): string
+    {
+        $base = 'http://ddragon.leagueoflegends.com/cdn';
+        $path = "/{$version->__toString()}/img/champion/{$champion->getId()}.png";
+        return $base . $path;
     }
 }

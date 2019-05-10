@@ -20,12 +20,6 @@ class LegendZen
         $this->semver = $semver;
     }
 
-    public function welcomeCurrentVersionChampions(): array
-    {
-        $version = $this->welcomeCurrentVersion();
-        return $this->welcomeChampions($version);
-    }
-
     public function welcomeChampions(Version $version): array
     {
         return $this->client->getChampions(
