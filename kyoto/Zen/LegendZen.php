@@ -5,6 +5,7 @@ namespace SummonersKyoto\Zen;
 use Yoshikyoto\Riotgames\Api\Client;
 use Yoshikyoto\Riotgames\Api\Enum\Language;
 use Composer\Semver\Semver;
+use SummonersKyoto\Kami\Version;
 use SummonersKyoto\Kami\SummonerId;
 use SummonersKyoto\Kami\SummonerName;
 use SummonersKyoto\Kami\Summoner;
