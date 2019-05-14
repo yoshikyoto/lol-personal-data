@@ -8,7 +8,7 @@ use SummonersKyoto\Zen\LegendZen;
 use SummonersKyoto\Kami\ChampionMastery as KamiChampiomMastery;
 use SummonersKyoto\Kami\SummonerName;
 
-class ChampionMastery
+class ChampionMasteries
 {
     /**
      * Return a value for the field.
@@ -22,25 +22,26 @@ class ChampionMastery
     public function resolve(
         $rootValue,
         array $args,
-        GraphQLContext $context,
+            GraphQLContext $context,
         ResolveInfo $resolveInfo
     ) {
-        /**
-         * @var LegendZen $zen
-         */
-        $zen = \App::make(LegendZen::class);
-        $summoner = $zen->welcomeSummoner($this->welcomeSummonerName($args));
-        $championMasteries = $zen->welcomeChampionMasteries($summoner->getId());
+            /**
+             * @var LegendZen $zen
+             */
+            $zen = \App::make(LegendZen::class);
+            $summoner = $zen->welcomeSummoner($this->welcomeSummonerName($args));
+            $championMasteries = $zen->welcomeChampionMasteries($summoner->getId());
 
-        return array_map(function(KamiChampiomMastery $championMastery) {
-            return [
-                'isChestGranted' => $championMastery->isChestGranted(),
-            ];
-        }, $championMasteries);
+            return array_map(function(KamiChampiomMastery $championMastery) {
+                return [
+                    'isChestGranted' => $championMastery->isChestGranted(),
+                ];
+            }, $championMasteries);
     }
 
     private function welcomeSummonerName(array $args): SummonerName
     {
         return new SummonerName($args['summonerName']);
     }
+
 }
