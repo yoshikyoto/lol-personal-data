@@ -29,7 +29,7 @@ class Champion extends Model
     protected $primaryKey = 'key';
 
     /**
-     * @var string primaryKeyをstiringにする場合は必要
+     * @var string primaryKeyをstringにする場合は必要
      */
     protected $keyType = 'string';
 
@@ -55,5 +55,11 @@ class Champion extends Model
                 'icon_url' => $iconUrl,
             ]
         );
+    }
+
+    public static function welcomeAllChampions()
+    {
+        $result = static::all();
+        var_dump($result);
     }
 }

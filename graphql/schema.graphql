@@ -19,5 +19,4 @@ type Champion {
 
 type ChampionMastery {
     isChestGranted: Boolean!
-    champion: Champin
 }

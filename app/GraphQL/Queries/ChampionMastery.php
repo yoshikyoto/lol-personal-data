@@ -22,7 +22,7 @@ class ChampionMasteries
     public function resolve(
         $rootValue,
         array $args,
-            GraphQLContext $context,
+        GraphQLContext $context,
         ResolveInfo $resolveInfo
     ) {
             /**
@@ -31,6 +31,7 @@ class ChampionMasteries
             $zen = \App::make(LegendZen::class);
             $summoner = $zen->welcomeSummoner($this->welcomeSummonerName($args));
             $championMasteries = $zen->welcomeChampionMasteries($summoner->getId());
+
 
             return array_map(function(KamiChampiomMastery $championMastery) {
                 return [
