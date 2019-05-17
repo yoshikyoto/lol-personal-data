@@ -45,3 +45,23 @@ homestead=# \d champion
  created_at | timestamp(0) without time zone |           |          |
  updated_at | timestamp(0) without time zone |           |          |
 ```
+
+## Champion Command and Debug
+
+```sh
+php artisan champion:welcome
+```
+
+Access to http://homestead.test/graphql-playground
+
+Query
+
+```
+```
+
+## Directory
+
+- Temple: Domain Repository, Services
+- Kami: Domain Objects (Entity/ValueObject)
+- Jinja: Eloquent Model, DB interface
+- Zen: External API related classes such as API client
