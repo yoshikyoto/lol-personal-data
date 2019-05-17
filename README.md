@@ -7,9 +7,9 @@ https://readouble.com/laravel/5.8/ja/homestead.html
 ## Getting Started
 
 ```sh
+cp .env.example .env 
 composer install 
 yarn install --no-bin-links 
-cp .env.example .env 
 php artisan key:generate 
 ```
 
