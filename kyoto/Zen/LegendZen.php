@@ -13,6 +13,9 @@ use SummonersKyoto\Kami\SummonerId;
 use SummonersKyoto\Kami\SummonerName;
 use SummonersKyoto\Kami\Summoner;
 
+/**
+ * Riot Games API client
+ */
 class LegendZen
 {
     private $client;
@@ -27,6 +30,12 @@ class LegendZen
         $this->semver = $semver;
     }
 
+    /**
+     * バージョンを渡すとそのバージョンのチャンピオンん一覧を返す
+     * 言語は現状日本語固定。言語を指定するとチャンピオンの説明の言語などが変わる。
+     * @param Version $version
+     * @return array
+     */
     public function welcomeChampions(Version $version): array
     {
         return $this->client->getChampions(
@@ -35,6 +44,10 @@ class LegendZen
         );
     }
 
+    /**
+     * 最新バージョンを返す
+     * @return Version
+     */
     public function welcomeCurrentVersion(): Version
     {
         $versions = array_filter($this->client->getVersions(), function($version) {
@@ -44,11 +57,22 @@ class LegendZen
         return new Version($versions[0]);
     }
 
+    /**
+     * 9.3.0 などの文字列を渡すと、lol-personal-dataシステム城でvalidなバージョンかどうか
+     * （＝セマンティックバージョニングの書き方として正しいかどうか）を返す
+     * @param string $version
+     * @return bool
+     */
     public function isValidVersion(string $version): bool
     {
         return preg_match('/^[0-9]+\.[0-9]+\.[0-9]+$/u', $version) === 1;
     }
 
+    /**
+     * SummonerNameを渡すとSummoner情報を返す
+     * @param SummonerName $summonerName
+     * @return Summoner
+     */
     public function welcomeSummoner(SummonerName $summonerName): Summoner
     {
         $summoner = $this->client->getSummoner($summonerName->__toString());
@@ -58,7 +82,11 @@ class LegendZen
         );
     }
 
-    public function welcomeChampionMasteries(SummonerId $summonerId)
+    /**
+     * $summonerIdに対応するChampionMasteryを全て取得して返す
+     * @return ChampionMastery[]
+     */
+    public function welcomeChampionMasteries(SummonerId $summonerId): array
     {
         $masteries = $this->client->getChampionMastery($summonerId->__toString());
         return array_map(function($mastery) {
