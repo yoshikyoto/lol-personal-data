@@ -3,15 +3,29 @@
 
 namespace SummonersKyoto\Kami;
 
-
-class ChampionMastery
+/**
+ * チャンピオンマスタリーの情報
+ */
+class ChampionMastery implements Hengakable
 {
+    /**
+     * @var bool チェストを獲得しているかどうか
+     */
     private $isChestGranted;
 
+    /**
+     * @var ChampionKey
+     */
     private $championKey;
 
+    /**
+     * @var int
+     */
     private $championLevel;
 
+    /**
+     * @var int マスタリートークンの数
+     */
     private $tokensEarned;
 
     public function __construct(
@@ -46,5 +60,10 @@ class ChampionMastery
         return $this->tokensEarned;
     }
 
-
+    public function hengaku(): array
+    {
+        return [
+            'isChestGranted' => $this->isChestGranted,
+        ];
+    }
 }
