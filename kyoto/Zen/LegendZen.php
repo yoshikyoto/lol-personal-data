@@ -2,6 +2,7 @@
 
 namespace SummonersKyoto\Zen;
 
+use SummonersKyoto\Jinja\ChampionMasteryJinja;
 use SummonersKyoto\Kami\ChampionKey;
 use SummonersKyoto\Kami\ChampionMastery;
 use Yoshikyoto\Riotgames\Model\ChampionMastery as ZenChampionMastery;
@@ -16,7 +17,7 @@ use SummonersKyoto\Kami\Summoner;
 /**
  * Riot Games API client
  */
-class LegendZen
+class LegendZen implements ChampionMasteryJinja
 {
     private $client;
 
@@ -85,6 +86,8 @@ class LegendZen
     /**
      * $summonerIdに対応するChampionMasteryを全て取得して返す
      * @return ChampionMastery[]
+     * @param SummonerId $summonerId
+     * @return array
      */
     public function welcomeChampionMasteries(SummonerId $summonerId): array
     {
