@@ -3,7 +3,6 @@
 
 namespace SummonersKyoto\Kami;
 
-
 abstract class StringValue
 {
     private $value;

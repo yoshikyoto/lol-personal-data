@@ -4,10 +4,16 @@ namespace App\GraphQL\Queries;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use SummonersKyoto\Torii\ChampionMasteryNoTorii;
 use SummonersKyoto\Zen\LegendZen;
 use SummonersKyoto\Kami\ChampionMastery as KamiChampiomMastery;
 use SummonersKyoto\Kami\SummonerName;
 
+/**
+ * Class ChampionMasteries
+ * @package App\GraphQL\Queries
+ * ChampionMasteryクエリのリゾルバ
+ */
 class ChampionMasteries
 {
     /**
@@ -25,10 +31,13 @@ class ChampionMasteries
         GraphQLContext $context,
         ResolveInfo $resolveInfo
     ) {
-            /**
-             * @var LegendZen $zen
-             */
-            $zen = \App::make(LegendZen::class);
+        $torii = \App::make(ChampionMasteryNoTorii::class);
+        return $torii->welcome($args['summonerName']);
+        /**
+         * @var LegendZen $zen
+         */
+        /*
+            $zen = \App::make(ChampionMasteryNoTorii::class);
             $summoner = $zen->welcomeSummoner($this->welcomeSummonerName($args));
             $championMasteries = $zen->welcomeChampionMasteries($summoner->getId());
 
@@ -38,6 +47,7 @@ class ChampionMasteries
                     'isChestGranted' => $championMastery->isChestGranted(),
                 ];
             }, $championMasteries);
+        */
     }
 
     private function welcomeSummonerName(array $args): SummonerName
