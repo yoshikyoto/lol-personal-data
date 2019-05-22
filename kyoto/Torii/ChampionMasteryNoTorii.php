@@ -14,10 +14,14 @@ class ChampionMasteryNoTorii
 
     private $summonerJinja;
 
+    private $championMasteryJinja;
+
     public function __construct(
-        SummonerJinja $summonerJinja
+        SummonerJinja $summonerJinja,
+        ChampionMasteryJinja $championMasteryJinja
     ) {
         $this->summonerJinja = $summonerJinja;
+        $this->championMasteryJinja = $championMasteryJinja;
     }
 
     /**
@@ -26,7 +30,8 @@ class ChampionMasteryNoTorii
     public function welcome(string $summonerNameString): array
     {
         $summonerName = new SummonerName($summonerNameString);
-        $championMasteries = $this->summonerJinja->welcomeSummoner($summonerName);
+        $summoner = $this->summonerJinja->welcomeSummoner($summonerName);
+        $championMasteries = $this->championMasteryJinja->welcomeChampionMasteries($summoner->getId());
         $hengaku = $this->hengakuMulti($championMasteries);
         return $hengaku;
     }

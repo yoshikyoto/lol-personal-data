@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SummonersKyoto\Jinja\ChampionMasteryJinja;
 use SummonersKyoto\Jinja\SummonerJinja;
 use SummonersKyoto\Zen\LegendZen;
 use Yoshikyoto\Riotgames\Api\Client;
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(SummonerJinja::class, function($app) {
+            return $app->make(LegendZen::class);
+        });
+        $this->app->singleton(ChampionMasteryJinja::class, function($app) {
             return $app->make(LegendZen::class);
         });
     }
