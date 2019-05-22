@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SummonersKyoto\Jinja\SummonerJinja;
+use SummonersKyoto\Zen\LegendZen;
 use Yoshikyoto\Riotgames\Api\Client;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Client::class, function ($app) {
             return new Client(env('RIOTGAMES_API_KEY'));
+        });
+
+        $this->app->singleton(SummonerJinja::class, function($app) {
+            return $app->make(LegendZen::class);
         });
     }
 
