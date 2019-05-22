@@ -5,6 +5,7 @@ namespace SummonersKyoto\Jinja;
 
 
 use SummonersKyoto\Kami\SummonerName;
+use SummonersKyoto\Kami\Summoner;
 
 
 interface SummonerJinja
