@@ -1,6 +1,6 @@
 <?php
 
-namespace SummonersKyoto\Jinja;
+namespace SummonersKyoto\Honden;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -60,6 +60,5 @@ class Champion extends Model
     public static function welcomeAllChampions()
     {
         $result = static::all();
-        var_dump($result);
     }
 }
