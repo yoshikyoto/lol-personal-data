@@ -6,6 +6,7 @@ use SummonersKyoto\Jinja\ChampionMasteryJinja;
 use SummonersKyoto\Jinja\SummonerJinja;
 use SummonersKyoto\Kami\ChampionKey;
 use SummonersKyoto\Kami\ChampionMastery;
+use Yoshikyoto\Riotgames\Model\Champion;
 use Yoshikyoto\Riotgames\Model\ChampionMastery as ZenChampionMastery;
 use Yoshikyoto\Riotgames\Api\Client;
 use Yoshikyoto\Riotgames\Api\Enum\Language;
@@ -15,6 +16,7 @@ use SummonersKyoto\Kami\SummonerId;
 use SummonersKyoto\Kami\SummonerName;
 use SummonersKyoto\Kami\Summoner;
 
+
 /**
  * Riot Games API client
  */
@@ -22,6 +24,9 @@ class LegendZen implements ChampionMasteryJinja, SummonerJinja
 {
     private $client;
 
+    /**
+     * @var Semver セマンティックバージョニング判定のモジュール
+     */
     private $semver;
 
     public function __construct(
@@ -36,7 +41,7 @@ class LegendZen implements ChampionMasteryJinja, SummonerJinja
      * バージョンを渡すとそのバージョンのチャンピオンん一覧を返す
      * 言語は現状日本語固定。言語を指定するとチャンピオンの説明の言語などが変わる。
      * @param Version $version
-     * @return array
+     * @return Champion[]
      */
     public function welcomeChampions(Version $version): array
     {

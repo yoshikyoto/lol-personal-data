@@ -3,9 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use SummonersKyoto\Jinja\Champion;
+use SummonersKyoto\Honden\Champion as ChampionHonden;
 use SummonersKyoto\Zen\LegendZen;
-use SummonersKyoto\Kami\SummonerName;
 use SummonersKyoto\Kami\Version;
 use Yoshikyoto\Riotgames\Model\Champion as ZenChampion;
 
@@ -42,7 +41,7 @@ class WelcomeChampion extends Command
         $version = $this->legendZen->welcomeCurrentVersion();
         $champions = $this->legendZen->welcomeChampions($version);
         foreach ($champions as $champion) {
-            Champion::summon(
+            ChampionHonden::summon(
                 $champion->getKey(),
                 $champion->getId(),
                 $champion->getName(),
