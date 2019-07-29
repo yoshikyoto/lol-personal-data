@@ -22,6 +22,6 @@ class Champion
             'key' => 'key',
             'id' => 'id',
             'name' => ラックス
-        ]
+        ];
     }
 }
